@@ -340,7 +340,7 @@ async function handleSkillWrite(req,res,id){
   }catch(e){return sendJson(res,e.status||500,{error:e.status?e.message:"Could not save skill."});}
 }
 async function handleMediaEdit(req,res,id){
-  try{const media=await one("media",id);if(!media)return sendJson(res,404,{error:"Media item not found."});const b=await readJson(req),fileName=String(b.fileName||"").trim(),altText=String(b.altText||"").trim();if(!fileName||fileName.length>255|/[\\/\r\n]/.test(fileName)||altText.length>1000)return sendJson(res,400,{error:"Provide a valid display filename and alt text."});
+  try{const media=await one("media",id);if(!media)return sendJson(res,404,{error:"Media item not found."});const b=await readJson(req),fileName=String(b.fileName||"").trim(),altText=String(b.altText||"").trim();if(!fileName||fileName.length>255 || /[\\/\r\n]/.test(fileName)||altText.length>1000)return sendJson(res,400,{error:"Provide a valid display filename and alt text."});
     const update={file_name:fileName,alt_text:altText};if(typeof b.aiMetadata==="string"||b.aiMetadata===null)update.ai_metadata=b.aiMetadata;await q(supabase.from("media").update(update).eq("id",id));return sendJson(res,200,await one("media",id));
   }catch(e){return sendJson(res,e.status||500,{error:e.status?e.message:"Could not update media details."});}
 }
