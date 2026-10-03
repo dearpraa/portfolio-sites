@@ -13,8 +13,8 @@ The existing public design and admin CMS are preserved. CMS content now uses Sup
 1. Open Supabase SQL Editor.
 2. Run `supabase/schema.sql`.
 3. In Supabase Settings → API Keys, create/use a server-side **secret key**.
-4. Never put that secret key in browser code or GitHub. Supabase documents secret keys as server-only credentials that bypass RLS. citeturn0search9
-5. The `portfolio-images` bucket is public because the portfolio images are public. Supabase serves public bucket files through its CDN/public object URL. citeturn0search4
+4. Never put that secret key in browser code or GitHub. Supabase documents secret keys as server-only credentials that bypass RLS.
+5. The `portfolio-images` bucket is public because the portfolio images are public. Supabase serves public bucket files through its CDN/public object URL.
 
 ## Environment variables
 
@@ -47,7 +47,7 @@ Do not commit any real API keys or passwords.
 - **Vercel:** application/serverless runtime only.
 - **Browser:** never receives the Supabase secret key.
 
-Supabase recommends storing large media in Storage rather than in database rows. citeturn0search3
+Supabase recommends storing large media in Storage rather than in database rows.
 
 ## Existing content
 
