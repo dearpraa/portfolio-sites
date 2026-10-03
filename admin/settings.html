@@ -1,0 +1,9 @@
+<template id="settings-view-template">
+  <section class="admin-card">
+    <h2>Server settings</h2>
+    <p>Media uploads accept JPEG, PNG, WebP, or AVIF files up to 12 MB. The CMS database is stored in <code>data/portfolio.sqlite</code>; image uploads are stored in <code>uploads/</code>.</p>
+    <p>Admin credentials are read from the server's <code>.env</code> file. To change them, update <code>ADMIN_USERNAME</code> or <code>ADMIN_PASSWORD</code> there, then restart the server. Passwords are never stored in the database or sent back to this page.</p>
+    <p>Use HTTPS before exposing this server publicly. Back up the database and uploads together.</p>
+    <a class="admin-button-secondary" href="/">Open public website</a>
+  </section>
+</template>

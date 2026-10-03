@@ -1,0 +1,35 @@
+<template id="skills-view-template">
+  <div>
+    <section class="admin-card">
+      <div class="admin-toolbar">
+        <div>
+          <h2 style="margin: 0;">Skills &amp; Expertise</h2>
+          <p style="margin: 0.35rem 0 0;">Manage the skills and expertise displayed on the About page.</p>
+        </div>
+        <button class="admin-button" type="button" data-action="add-skill">+ Add Skill</button>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead><tr><th></th><th>Icon</th><th>Name</th><th>Percent</th><th>Visibility</th><th>Order</th><th>Actions</th></tr></thead>
+          <tbody id="skill-rows"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</template>
+
+<template id="skill-row-template">
+  <tr draggable="true" class="drag-row" data-id="">
+    <td class="drag-handle" title="Drag to reorder">☰</td>
+    <td><i data-skill-icon aria-hidden="true"></i></td>
+    <td data-skill-name></td>
+    <td data-skill-percent></td>
+    <td data-skill-visibility></td>
+    <td data-skill-order></td>
+    <td class="admin-actions">
+      <button data-action="edit-skill">Edit</button>
+      <button data-action="toggle-skill"></button>
+      <button data-action="delete-skill">Delete</button>
+    </td>
+  </tr>
+</template>

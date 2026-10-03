@@ -1,0 +1,22 @@
+<template id="navigation-view-template">
+  <section class="admin-card">
+    <div class="admin-toolbar"><button class="admin-button" data-action="add-navigation">+ Add navigation item</button></div>
+    <p>Drag rows to change the order in the shared public navigation.</p>
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead><tr><th>Order</th><th>Label</th><th>URL</th><th>Icon</th><th>Visibility</th><th>Order #</th><th>Actions</th></tr></thead>
+        <tbody id="navigation-rows"></tbody>
+      </table>
+    </div>
+  </section>
+</template>
+
+<template id="navigation-row-template">
+  <tr draggable="true" class="drag-row" data-id="">
+    <td class="drag-handle">☰</td><td data-navigation-label></td><td data-navigation-url></td>
+    <td data-navigation-icon></td><td data-navigation-visibility></td><td data-navigation-order></td>
+    <td class="admin-actions">
+      <button data-action="edit-navigation">Edit</button><button data-action="toggle-navigation"></button><button data-action="delete-navigation">Delete</button>
+    </td>
+  </tr>
+</template>

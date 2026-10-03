@@ -1,0 +1,322 @@
+<template id="admin-layout-template">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <a class="admin-brand" href="/admin/dashboard" data-route="dashboard">
+        <img src="/assets/logo.png" alt="Portfolio logo">
+        <span>Portfolio Admin</span>
+      </a>
+      <nav class="admin-nav" aria-label="Admin navigation">
+        <a href="/admin/dashboard" data-route="dashboard"><i class="ri-dashboard-line" aria-hidden="true"></i><span class="nav-label">Dashboard</span></a>
+        <a href="/admin/portfolio" data-route="portfolio"><i class="ri-image-2-line" aria-hidden="true"></i><span class="nav-label">Portfolio</span></a>
+        <a href="/admin/content" data-route="content"><i class="ri-file-text-line" aria-hidden="true"></i><span class="nav-label">Content</span></a>
+        <a href="/admin/skills" data-route="skills"><i class="ri-tools-line" aria-hidden="true"></i><span class="nav-label">Skills &amp; Expertise</span></a>
+        <a href="/admin/social" data-route="social"><i class="ri-share-line" aria-hidden="true"></i><span class="nav-label">Social</span></a>
+        <a href="/admin/navigation" data-route="navigation"><i class="ri-menu-line" aria-hidden="true"></i><span class="nav-label">Navigation</span></a>
+        <a href="/admin/media" data-route="media"><i class="ri-folder-image-line" aria-hidden="true"></i><span class="nav-label">Media</span></a>
+        <a href="/admin/settings" data-route="settings"><i class="ri-settings-3-line" aria-hidden="true"></i><span class="nav-label">Settings</span></a>
+      </nav>
+      <div class="admin-sidebar-bottom">
+        <a class="admin-public-link" href="/">View website</a>
+        <button class="admin-logout" type="button" data-action="logout"><i class="ri-logout-box-line" aria-hidden="true"></i> Logout</button>
+      </div>
+    </aside>
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div>
+          <h1 data-page-title></h1>
+          <p>Signed in as <span data-current-user></span></p>
+        </div>
+      </header>
+      <div data-admin-notice></div>
+      <div data-page-content></div>
+    </main>
+  </div>
+</template>
+
+<template id="admin-pill-template">
+  <span class="status-pill"></span>
+</template>
+
+<template id="admin-notice-template">
+  <div class="admin-notice" role="status"></div>
+</template>
+
+<template id="admin-dialog-template">
+  <div class="admin-dialog-backdrop">
+    <section class="admin-dialog" role="dialog" aria-modal="true">
+      <header class="admin-dialog-head">
+        <h2></h2>
+        <button class="icon-button" type="button" data-close-dialog aria-label="Close">×</button>
+      </header>
+    </section>
+  </div>
+</template>
+
+<template id="admin-error-template">
+  <div class="login-shell">
+    <section class="login-card">
+      <h1>Admin unavailable</h1>
+      <p data-error-message></p>
+      <a href="/admin/login">Return to sign in</a>
+    </section>
+  </div>
+</template>
+
+<template id="portfolio-row-template">
+  <tr draggable="true" class="drag-row" data-id="">
+    <td class="drag-handle" title="Drag to reorder">☰</td>
+    <td><img class="admin-thumb" src="" alt=""></td>
+    <td><strong data-photo-title></strong><span class="status-pill success" data-photo-ai-badge hidden style="margin-left: 0.3rem; font-size: 0.75rem;">AI</span><br><span data-photo-file></span></td>
+    <td data-photo-category></td>
+    <td data-photo-status></td>
+    <td data-photo-featured></td>
+    <td data-photo-order></td>
+    <td class="admin-actions">
+      <button data-action="edit-photo">Edit</button>
+      <button data-action="ai-review">AI Analysis</button>
+      <button data-action="toggle-publish"></button>
+      <button data-action="toggle-hidden"></button>
+      <button data-action="toggle-featured"></button>
+      <button data-action="delete-photo">Delete</button>
+    </td>
+  </tr>
+</template>
+
+<template id="photo-dialog-form-template">
+  <form class="admin-form" id="photo-form" enctype="multipart/form-data">
+    <img class="admin-preview" data-photo-preview alt="" hidden>
+    <div class="ai-toolbar" style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+      <button class="admin-button-secondary" type="button" data-action="open-ai-dialog"><i class="ri-sparkles-line"></i> AI Analysis</button>
+      <span class="status-pill success" data-photo-ai-badge hidden>Already analyzed</span>
+      <span class="ai-status" data-ai-status style="font-size: 0.875rem; opacity: 0.8;"></span>
+    </div>
+    <div class="admin-form-grid">
+      <label class="admin-field full" for="photo-file-input">
+        Photo
+        <input id="photo-file-input" type="file" name="photo" accept="image/jpeg,image/png,image/webp,image/avif">
+      </label>
+      <label class="admin-field" for="photo-title-input">
+        Title
+        <input id="photo-title-input" type="text" name="title" required>
+      </label>
+      <label class="admin-field" for="photo-category-select">
+        Category
+        <select id="photo-category-select" name="category">
+          <option value="">No category</option>
+        </select>
+      </label>
+      <label class="admin-field" for="photo-location-input">
+        Location
+        <input id="photo-location-input" type="text" name="location">
+      </label>
+      <label class="admin-field" for="photo-date-input">
+        Date
+        <input id="photo-date-input" type="date" name="photoDate">
+      </label>
+      <label class="admin-field" for="photo-tags-input">
+        Tags (comma-separated)
+        <input id="photo-tags-input" type="text" name="tags">
+      </label>
+      <label class="admin-field" for="photo-order-input">
+        Display order
+        <input id="photo-order-input" type="number" name="displayOrder" value="0">
+      </label>
+      <label class="admin-field full" for="photo-desc-input">
+        Description
+        <textarea id="photo-desc-input" name="description"></textarea>
+      </label>
+      <label class="admin-field full" for="photo-alt-input">
+        Alt Text (Accessibility)
+        <textarea id="photo-alt-input" name="altText"></textarea>
+      </label>
+    </div>
+    <div class="check-grid" data-photo-status>
+      <label class="admin-check"><input type="checkbox" name="featured" value="true"><span>Featured</span></label>
+      <label class="admin-check"><input type="checkbox" name="published" value="true" checked><span>Published</span></label>
+      <label class="admin-check"><input type="checkbox" name="hidden" value="true"><span>Hidden from public site</span></label>
+    </div>
+    <div class="admin-dialog-actions">
+      <button class="admin-button-secondary" type="button" data-close-dialog>Cancel</button>
+      <button class="admin-button" type="submit" data-submit-label>Upload photo</button>
+    </div>
+  </form>
+</template>
+
+<template id="ai-analysis-dialog-template">
+  <form class="admin-form" id="ai-analysis-form">
+    <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem;">
+      <img class="admin-preview" data-ai-preview alt="" style="max-height: 120px; object-fit: contain;">
+      <div>
+        <span class="status-pill success" data-ai-analyzed-badge hidden>Already analyzed</span>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #aaa;" data-ai-status-text>Review or edit the AI-generated metadata before saving.</p>
+      </div>
+    </div>
+    <div class="admin-form-grid">
+      <label class="admin-field" for="ai-title">Title <input id="ai-title" type="text" name="title"></label>
+      <label class="admin-field" for="ai-category">Category <input id="ai-category" type="text" name="category"></label>
+      <label class="admin-field full" for="ai-description">Description <textarea id="ai-description" name="description"></textarea></label>
+      <label class="admin-field full" for="ai-alt-text">Alt Text (Accessibility) <textarea id="ai-alt-text" name="altText"></textarea></label>
+      <label class="admin-field" for="ai-location">Location <input id="ai-location" type="text" name="location"></label>
+      <label class="admin-field" for="ai-tags">Tags (comma-separated) <input id="ai-tags" type="text" name="tags"></label>
+      <label class="admin-field" for="ai-subject">Subject <input id="ai-subject" type="text" name="subject"></label>
+      <label class="admin-field" for="ai-scene">Scene <input id="ai-scene" type="text" name="scene"></label>
+      <label class="admin-field" for="ai-mood">Mood <input id="ai-mood" type="text" name="mood"></label>
+      <label class="admin-field" for="ai-lighting">Lighting <input id="ai-lighting" type="text" name="lighting"></label>
+      <label class="admin-field" for="ai-composition">Composition <input id="ai-composition" type="text" name="composition"></label>
+      <label class="admin-field" for="ai-style">Style <input id="ai-style" type="text" name="style"></label>
+    </div>
+    <div class="admin-dialog-actions" style="margin-top: 1.5rem;">
+      <button class="admin-button-secondary" type="button" data-action="ai-reanalyze"><i class="ri-refresh-line"></i> Analyze Again</button>
+      <button class="admin-button-secondary" type="button" data-close-dialog>Cancel</button>
+      <button class="admin-button" type="submit" data-action="ai-save">Save</button>
+    </div>
+  </form>
+</template>
+
+
+
+<template id="social-dialog-form-template">
+  <form class="admin-form">
+    <div class="admin-form-grid">
+      <label class="admin-field" for="social-platform-select">
+        Platform
+        <select id="social-platform-select" name="platform">
+          <option value="Instagram">Instagram</option>
+          <option value="Facebook">Facebook</option>
+          <option value="TikTok">TikTok</option>
+          <option value="YouTube">YouTube</option>
+          <option value="Pinterest">Pinterest</option>
+          <option value="LinkedIn">LinkedIn</option>
+          <option value="X/Twitter">X/Twitter</option>
+          <option value="Threads">Threads</option>
+          <option value="Behance">Behance</option>
+          <option value="Dribbble">Dribbble</option>
+          <option value="WhatsApp">WhatsApp</option>
+          <option value="Email">Email</option>
+          <option value="Website">Website</option>
+          <option value="Custom">Custom</option>
+        </select>
+      </label>
+      <label class="admin-field" for="social-name-input">
+        Display name
+        <input id="social-name-input" type="text" name="displayName" required>
+      </label>
+      <label class="admin-field" for="social-url-input">
+        URL
+        <input id="social-url-input" type="url" name="url" required>
+      </label>
+      <label class="admin-field" for="social-icon-input">
+        Icon class (Remix Icon)
+        <input id="social-icon-input" type="text" name="icon" value="ri-link" required>
+      </label>
+      <label class="admin-field" for="social-order-input">
+        Display order
+        <input id="social-order-input" type="number" name="displayOrder" value="0">
+      </label>
+      <label class="admin-check"><input type="checkbox" name="visible" value="true" checked><span>Visible</span></label>
+    </div>
+    <div class="admin-field full">
+      <span>Display locations</span>
+      <div class="check-grid" data-social-locations>
+        <label class="admin-check"><input type="checkbox" name="locations" value="header"><span>Header</span></label>
+        <label class="admin-check"><input type="checkbox" name="locations" value="homepage"><span>Homepage</span></label>
+        <label class="admin-check"><input type="checkbox" name="locations" value="about"><span>About</span></label>
+        <label class="admin-check"><input type="checkbox" name="locations" value="portfolio"><span>Portfolio</span></label>
+        <label class="admin-check"><input type="checkbox" name="locations" value="contact"><span>Contact</span></label>
+        <label class="admin-check"><input type="checkbox" name="locations" value="footer"><span>Footer</span></label>
+      </div>
+    </div>
+    <div class="admin-dialog-actions">
+      <button class="admin-button-secondary" type="button" data-close-dialog>Cancel</button>
+      <button class="admin-button" type="submit" data-submit-label>Add social link</button>
+    </div>
+  </form>
+</template>
+
+<template id="navigation-dialog-form-template">
+  <form class="admin-form">
+    <div class="admin-form-grid">
+      <label class="admin-field" for="nav-label-input">
+        Label
+        <input id="nav-label-input" type="text" name="label" required>
+      </label>
+      <label class="admin-field" for="nav-url-input">
+        URL (site path, #anchor, or HTTPS URL)
+        <input id="nav-url-input" type="text" name="url" required>
+      </label>
+      <label class="admin-field" for="nav-icon-input">
+        Icon class
+        <input id="nav-icon-input" type="text" name="icon">
+      </label>
+      <label class="admin-field" for="nav-order-input">
+        Display order
+        <input id="nav-order-input" type="number" name="displayOrder" value="0">
+      </label>
+    </div>
+    <label class="admin-check"><input type="checkbox" name="visible" value="true" checked><span>Visible</span></label>
+    <div class="admin-dialog-actions">
+      <button class="admin-button-secondary" type="button" data-close-dialog>Cancel</button>
+      <button class="admin-button" type="submit" data-submit-label>Add item</button>
+    </div>
+  </form>
+</template>
+
+<template id="media-edit-form-template">
+  <form class="admin-form">
+    <div class="admin-form-grid">
+      <label class="admin-field" for="media-filename-input">
+        Display filename
+        <input id="media-filename-input" type="text" name="fileName" required>
+      </label>
+      <label class="admin-field" for="media-alt-input">
+        Alt text
+        <input id="media-alt-input" type="text" name="altText">
+      </label>
+    </div>
+    <div class="admin-dialog-actions">
+      <button class="admin-button-secondary" type="button" data-close-dialog>Cancel</button>
+      <button class="admin-button" type="submit">Save details</button>
+    </div>
+  </form>
+</template>
+
+<template id="media-replace-form-template">
+  <form class="admin-form">
+    <label class="admin-field" for="replacement-photo">
+      Replacement photo
+      <input id="replacement-photo" type="file" name="photo" accept="image/jpeg,image/png,image/webp,image/avif" required>
+    </label>
+    <div class="admin-dialog-actions">
+      <button class="admin-button-secondary" type="button" data-close-dialog>Cancel</button>
+      <button class="admin-button" type="submit">Replace image</button>
+    </div>
+  </form>
+</template>
+
+<template id="skill-dialog-form-template">
+  <form class="admin-form">
+    <div class="admin-form-grid">
+      <label class="admin-field" for="skill-name-input">
+        Name (1–60 chars)
+        <input id="skill-name-input" type="text" name="name" required maxlength="60">
+      </label>
+      <label class="admin-field" for="skill-percent-input">
+        Percent (0–100)
+        <input id="skill-percent-input" type="number" name="percent" min="0" max="100" step="1" value="80" required>
+      </label>
+      <label class="admin-field" for="skill-icon-input">
+        Icon class (e.g. ri-camera-line)
+        <input id="skill-icon-input" type="text" name="icon" value="ri-star-line" required>
+      </label>
+      <label class="admin-field" for="skill-order-input">
+        Display order
+        <input id="skill-order-input" type="number" name="displayOrder" value="0">
+      </label>
+    </div>
+    <label class="admin-check"><input type="checkbox" name="visible" value="true" checked><span>Visible</span></label>
+    <div class="admin-dialog-actions">
+      <button class="admin-button-secondary" type="button" data-close-dialog>Cancel</button>
+      <button class="admin-button" type="submit" data-submit-label>Add skill</button>
+    </div>
+  </form>
+</template>

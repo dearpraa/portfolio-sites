@@ -1,0 +1,24 @@
+<template id="portfolio-view-template">
+  <section class="admin-card">
+    <div class="admin-toolbar">
+      <input type="search" id="photo-search" placeholder="Search title or filename" aria-label="Search photos">
+      <select id="photo-category" aria-label="Filter by category"></select>
+      <select id="photo-status" aria-label="Filter by status">
+        <option value="">All statuses</option><option value="published">Published</option>
+        <option value="draft">Draft</option><option value="hidden">Hidden</option>
+      </select>
+      <select id="photo-featured" aria-label="Filter featured">
+        <option value="">Featured and regular</option><option value="yes">Featured</option><option value="no">Not featured</option>
+      </select>
+      <button class="admin-button" data-action="add-photo">+ Add Portfolio Item</button>
+    </div>
+    <p>Drag rows to reorder. Order is shared with the public portfolio.</p>
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead><tr><th>Order</th><th>Image</th><th>Title</th><th>Category</th><th>Status</th><th>Featured</th><th>Order #</th><th>Actions</th></tr></thead>
+        <tbody id="photo-rows"></tbody>
+      </table>
+    </div>
+  </section>
+</template>
+

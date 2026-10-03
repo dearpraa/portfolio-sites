@@ -1,0 +1,19 @@
+<template id="media-view-template">
+  <section class="admin-card">
+    <div class="admin-toolbar"><input type="search" id="media-search" placeholder="Search filename or title"></div>
+    <div class="media-grid" id="media-grid"></div>
+  </section>
+</template>
+
+<template id="media-tile-template">
+  <article class="media-tile">
+    <img loading="lazy" src="" alt="">
+    <div class="media-tile-body">
+      <strong data-media-name></strong><span data-media-usage></span>
+      <div class="admin-actions">
+        <button data-action="edit-media">Edit</button><button data-action="view-usage">View Usage</button>
+        <button data-action="replace-media">Replace</button><button data-action="delete-media">Delete</button>
+      </div>
+    </div>
+  </article>
+</template>

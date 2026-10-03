@@ -1,0 +1,23 @@
+<template id="dashboard-view-template">
+  <div>
+    <section class="stat-grid" data-stat-grid></section>
+    <section class="admin-card">
+      <h2>Quick actions</h2>
+      <div class="quick-actions">
+        <button class="admin-button" data-action="add-photo">+ Upload Photo</button>
+        <button class="admin-button-secondary" data-action="add-photo">+ Add Portfolio Item</button>
+        <button class="admin-button-secondary" data-route="social">+ Add Social Link</button>
+        <button class="admin-button-secondary" data-route="content">Edit Website Content</button>
+        <button class="admin-button-secondary" data-route="navigation">Manage Navigation</button>
+      </div>
+    </section>
+    <section class="admin-card admin-storage-card">
+      <h2>Data storage</h2>
+      <p>Portfolio records and settings are stored in the local SQLite database. Uploaded photos are stored on this server.</p>
+    </section>
+  </div>
+</template>
+
+<template id="admin-stat-template">
+  <article class="admin-card"><span class="stat-value"></span><span class="stat-label"></span></article>
+</template>

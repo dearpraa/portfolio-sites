@@ -3,198 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Desarrollound</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/about.css">
+    <meta name="description" content="Photography portfolio about page">
+    <title>Photography Portfolio | About</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/master.css">
     <link rel="icon" type="image/png" href="assets/icon logo.png">
 </head>
 <body>
     <!-- Header -->
-    <header id="mainHeader">
-        <div class="nav__container">
-            <a href="about.html" img src="assets/logo.png" alt="logo">
-                </a>
-            </div>
-            <nav>
-                <a href="home.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="photography.html">Portfolio</a>
-            </nav>
-        </div>
+    <header class="site-header" id="mainHeader">
+        <a class="nav__logo" href="home.html" aria-label="Home">
+            <img src="assets/logo.png" alt="Portfolio logo">
+        </a>
+        <button class="nav__menu__btn" id="menu-btn" type="button" aria-label="Open navigation" aria-expanded="false">
+            <i class="ri-menu-3-line"></i>
+        </button>
+        <nav aria-label="Main navigation">
+            <ul class="nav__links" id="nav-links"></ul>
+        </nav>
+        <div class="site-header__socials" data-social-location="header" aria-label="Social links"></div>
     </header>
 
     <!-- Main Content -->
     <main class="main-wrapper">
         <!-- About Section -->
         <section class="about-container">
-            <div class="about-image">
-                <img src="assets/about.png" alt="About Desarrollound">
-            </div>
-            <div class="about-content">
-                <h1>About Me</h1>
-                <p>I'm a creative professional based in Pokhara, Nepal, specializing in visual storytelling through photography and design. With a passion for capturing authentic moments, I strive to create work that resonates emotionally.</p>
-                <p>My approach combines technical expertise with artistic vision, resulting in images that tell compelling stories. Whether working with clients or on personal projects, I bring dedication and creativity to every frame.</p>
+            <div class="about-image" data-db-image="about" hidden>\n                <img alt="">\n            </div>\n            <div class="about-content">
+                <h1 data-content="about.title"></h1>
+                <p data-content="about.description"></p>
+                <p data-content="about.biography"></p>
+                <div class="site-section__socials" data-social-location="about" aria-label="About social links"></div>
                 <div class="hire-me-section">
                     <button id="hireMeBtn" class="hire-me-btn">
-                         <a href="hire.html"></a>
-                        <span>Hire Me</span>
-                        <i class="fas fa-paper-plane"></i>
+                        <span data-content="contact.hireButtonLabel"></span>
+                        <i class="ri-send-plane-fill"></i>
                     </button>
                 </div>
             </div>
         </section>
 
+        <section class="section__container cms-photo-section" data-photo-location="about" hidden></section>
+
         <!-- Skills Section -->
         <section class="skills-container">
             <div class="section-header">
-                <h2>My Skills & Expertise</h2>
-                <p>Here are the key areas where I excel in creating stunning visual content</p>
+                <h2 data-content="about.skillsTitle"></h2>
+                <p data-content="about.skillsDescription"></p>
             </div>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-camera"></i>
-                    </div>
-                    <div class="skill-info">
-                        <div class="skill-name">
-                            <span>Photography</span>
-                            <span class="skill-percent">95%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="95"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-edit"></i>
-                    </div>
-                    <div class="skill-info">
-                        <div class="skill-name">
-                            <span>Photo Editing</span>
-                            <span class="skill-percent">90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="90"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-adjust"></i>
-                    </div>
-                    <div class="skill-info">
-                        <div class="skill-name">
-                            <span>Lightroom</span>
-                            <span class="skill-percent">85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="85"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fab fa-adobe"></i>
-                    </div>
-                    <div class="skill-info">
-                        <div class="skill-name">
-                            <span>Photoshop</span>
-                            <span class="skill-percent">80%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="80"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <div class="skill-info">
-                        <div class="skill-name">
-                            <span>Video Editing</span>
-                            <span class="skill-percent">75%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="75"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <div class="skill-info">
-                        <div class="skill-name">
-                            <span>Creative Design</span>
-                            <span class="skill-percent">88%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="88"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+            <div class="skills-grid" data-db-skills></div>\n        </section>\n    </main>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Get In Touch</h3>
-                <p>Reach out for inquiries, collaborations, or just to say hello—I'd love to connect with you.</p>
+    <footer class="site-footer">
+        <div class="section__container footer__container">
+            <div class="footer__col">
+                <h3 data-content="footer.contactTitle"></h3>
+                <p data-content="footer.introduction"></p>
             </div>
-            
-            <div class="footer-section">
-                <h3>Where's My Office?</h3>
-                <p>FISTAIL HOUSING, BIRAUTA, POKHARA, NEPAL.</p>
+            <div class="footer__col">
+                <h3 data-content="footer.officeTitle"></h3>
+                <p data-content="contact.location"></p>
             </div>
-
-            <div class="footer-section">
-                <h3>My Social Links</h3>
-                <div class="social-links">
-              <a href="https://www.facebook.com/prajwol.gautam.35#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
-                <a href="https://www.tiktok.com/@prajwolgautam72" aria-label="TikTok"><i class="ri-tiktok-line"></i></a>
-                <a href="https://www.instagram.com/mr.praajwol/" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
-                <a href="https://www.youtube.com/@PrajwolGautam" aria-label="YouTube"><i class="ri-youtube-fill"></i></a>
-                <a href="https://wa.me/+97154519223s9" aria-label="WhatsApp"><i class="ri-whatsapp-line"></i></a>
+            <div class="footer__col">
+                <h3 data-content="footer.socialTitle"></h3>
+                <ul class="footer__socials" data-social-location="footer"></ul>
             </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2023 Desarrollound. All Rights Reserved.</p>
-            </div>
+        </div>
+        <div class="footer__bar">
+            <span data-content="footer.copyright"></span>
         </div>
     </footer>
 
-    <!-- Modal -->
+    <!-- Hire Me Modal -->
     <div id="hireModal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <h2>Let's Work Together</h2>
+            <h2 data-content="contact.closingTitle"></h2>
             <form id="contactForm">
                 <div class="form-group">
-                    <input type="text" placeholder="Your Name" required>
+                    <input type="text" name="name" placeholder="Your Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" placeholder="Your Email" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
                 </div>
                 <div class="form-group">
-                    <textarea placeholder="Tell me about your project..." required></textarea>
+                    <textarea name="message" placeholder="Tell me about your project..." required></textarea>
                 </div>
                 <button type="submit" class="submit-btn">Send Message</button>
             </form>
         </div>
     </div>
 
+    <script src="Javascript/public-cms.js"></script>
     <script src="Javascript/about.js"></script>
 </body>
 </html>

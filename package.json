@@ -1,0 +1,12 @@
+{
+  "name": "dear-praa-photography-cms",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Photography portfolio website and self-hosted admin CMS",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env Javascript/server.js"
+  },
+  "engines": {
+    "node": ">=22.13"
+  }
+}

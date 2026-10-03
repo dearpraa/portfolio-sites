@@ -1,0 +1,6 @@
+# Ignore all uploaded files in this directory so generated content is not committed.
+*
+
+# Keep the directory structure and Git metadata files tracked.
+!.gitignore
+!.gitkeep

@@ -1,140 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Photography portfolio">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/home.css" />
-  <title>Deaepraa | Photography</title>
+  <link rel="stylesheet" href="css/master.css" />
+  <title>Photography Portfolio</title>
   <link rel="icon" type="image/png" href="assets/icon logo.png">
-
 </head>
 
 <body>
-  <nav>
-    <div class="nav__header">
-      <div class="nav__logo">
-        <a href="home.html">
-          <img src="assets/logo.png" alt="logo" />
-        </a>
-      </div>
-      <div class="nav__menu__btn" id="menu-btn">
-        <i class="ri-menu-3-line"></i>
-      </div>
-    </div>
-    <ul class="nav__links" id="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="photography.html">Portfolio</a></li>
-    </ul>
-  </nav>
+  <header class="site-header">
+    <a class="nav__logo" href="home.html" aria-label="Home">
+      <img src="assets/logo.png" alt="Portfolio logo" />
+    </a>
+    <button class="nav__menu__btn" id="menu-btn" type="button" aria-label="Open navigation" aria-expanded="false">
+      <i class="ri-menu-3-line"></i>
+    </button>
+    <nav aria-label="Main navigation">
+      <ul class="nav__links" id="nav-links"></ul>
+    </nav>
+    <div class="site-header__socials" data-social-location="header" aria-label="Social links"></div>
+  </header>
 
   <header id="home">
     <div class="section__container header__container">
-      <div class="header__image">
-        <img src="assets/header.png" alt="header" />
-      </div>
-      <div class="header__content">
-        <h1>Photographer & Film Maker</h1>
-        <h2>POKHARA, NEPAL</h2>
+      <div class="header__image" data-db-image="hero" hidden>\n        <img alt="" />\n      </div>\n      <div class="header__content">
+        <h1 data-content="home.heroTitle"></h1>
+        <h2 data-content="home.heroSubtitle"></h2>
         <div class="header__btn">
-          <a href="hire.html">
-          <button  class="btn">HIRE ME</button>
+          <a class="btn" href="hire.html" data-content="home.ctaText"></a>
         </div>
       </div>
     </div>
   </header>
 
   <section class="section__container about__container" id="about">
-    <div class="about__image">
-      <img src="assets/about.png" alt="about" />
-    </div>
-    <div class="about__content">
-      <h2 class="section__header">About Me</h2>
-      <p>Hi, I’m Prajwol Gautam — also known as Dear Praa.</p>
-      <p>
-        I’m a passionate photographer and filmmaker dedicated to capturing
-        moments that tell compelling stories. My work blends emotional depth
-        with creative vision, delivering visuals that not only look stunning
-        but also connect with people on a deeper level.
-      </p>
-      <p>
-        Whether it’s through the lens of my camera or the framing of a
-        cinematic shot, I aim to bring authenticity, artistry, and a unique
-        perspective to every project I take on.
-      </p>
+    <div class="about__image" data-db-image="about" hidden>\n      <img alt="" />\n    </div>\n    <div class="about__content">
+      <h2 class="section__header" data-content="home.aboutTitle"></h2>
+      <p data-content="home.introduction"></p>
       <div class="about__btn">
-        <a href="photography.html">
-  <button class="btn">VIEW MY WORKS</button>
-</a>
-
+        <a class="btn" href="photography.html" data-content="home.aboutCta"></a>
       </div>
     </div>
   </section>
 
   <section class="section__container portfolio__container" id="portfolio">
-    <h2 class="section__header">Portfolio</h2>
-    <div class="portfolio__grid">
-      <div>
-        <img src="assets/portfolio-1.png" alt="portfolio" />
-        <img src="assets/portfolio-2.png" alt="portfolio" />
-        <img src="assets/portfolio-3.png" alt="portfolio" />
-      </div>
-      <div>
-        <img src="assets/portfolio-4.png" alt="portfolio" />
-        <img src="assets/portfolio-5.png" alt="portfolio" />
-      </div>
-      <div>
-        <img src="assets/portfolio-6.jpg" alt="portfolio" />
-        <img src="assets/portfolio-7.png" alt="portfolio" />
-      </div>
-    </div>
+    <h2 class="section__header" data-content="home.portfolioTitle"></h2>
+    <p data-content="home.portfolioDescription"></p>
+    <div class="cms-photo-section" data-photo-location="featured" hidden></div>
+    <div class="portfolio__grid" data-home-photos></div>
+    <div class="site-section__socials" data-social-location="homepage" aria-label="Homepage social links"></div>
   </section>
 
-  <footer>
+  <footer class="site-footer">
     <div class="section__container footer__container">
       <div class="footer__col">
-        <h4 class="section__header">Get In Touch</h4>
-        <p>
-          Reach out for inquiries, collaborations, or just to say hello—I'd
-          love to connect with you.
-        </p>
+        <h4 class="section__header" data-content="footer.contactTitle"></h4>
+        <p data-content="footer.introduction"></p>
       </div>
       <div class="footer__col">
-        <h4 class="section__header">Where's My Office?</h4>
-        <p>FISTAIL HOUSING, BIRAUTA, POKHARA, NEPAL.</p>
+        <h4 class="section__header" data-content="footer.officeTitle"></h4>
+        <p data-content="contact.location"></p>
       </div>
       <div class="footer__col">
-        <h4 class="section__header">My Social Links</h4>
-        <ul class="footer__socials">
-          <li>
-            <a href="https://www.facebook.com/prajwol.gautam.35#"><i class="ri-facebook-fill"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="ri-twitter-fill"></i></a>
-          </li>
-          <li>
-            <a href="https://www.tiktok.com/@prajwolgautam72"><i class="ri-tiktok-line"></i></a>
-          </li>
-          <li>
-            <a href="https://www.instagram.com/mr.praajwol/"><i class="ri-instagram-line"></i></a>
-          </li>
-          <li>
-            <a href="https://www.youtube.com/@PrajwolGautam"><i class="ri-youtube-fill"></i></a>
-          </li>
-          <li>
-            <a href="https://wa.me/+9779841234567"><i class="ri-whatsapp-line"></i></a>
-          </li>
-        </ul>
+        <h4 class="section__header" data-content="footer.socialTitle"></h4>
+        <ul class="footer__socials" data-social-location="footer"></ul>
       </div>
     </div>
     <div class="footer__bar">
-      Copyright © 2025 Deeznotfound. All rights reserved.
+      <span data-content="footer.copyright"></span>
     </div>
   </footer>
 
   <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="Javascript/public-cms.js"></script>
   <script src="Javascript/home.js"></script>
 </body>
 

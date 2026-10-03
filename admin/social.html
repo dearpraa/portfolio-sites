@@ -1,0 +1,55 @@
+<template id="social-view-template">
+  <section class="admin-card">
+    <div class="admin-toolbar">
+      <input type="search" id="social-search" placeholder="Search name or URL">
+      <select id="social-platform"><option value="">All platforms</option></select>
+      <select id="social-visible">
+        <option value="">Visible and hidden</option>
+        <option value="yes">Visible</option>
+        <option value="no">Hidden</option>
+      </select>
+      <select id="social-location">
+        <option value="">All locations</option>
+        <option value="header">Header</option>
+        <option value="homepage">Homepage</option>
+        <option value="about">About</option>
+        <option value="portfolio">Portfolio</option>
+        <option value="contact">Contact</option>
+        <option value="footer">Footer</option>
+      </select>
+      <button class="admin-button" data-action="add-social">+ Add Social Link</button>
+    </div>
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Order</th>
+            <th>Icon</th>
+            <th>Platform</th>
+            <th>URL</th>
+            <th>Locations</th>
+            <th>Visibility</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="social-rows"></tbody>
+      </table>
+    </div>
+  </section>
+</template>
+
+<template id="social-row-template">
+  <tr draggable="true" class="drag-row" data-id="">
+    <td class="drag-handle" title="Drag to reorder">☰</td>
+    <td><i aria-hidden="true"></i></td>
+    <td><strong data-social-name></strong><br><span data-social-platform></span></td>
+    <td><a target="_blank" rel="noopener noreferrer" data-social-url></a></td>
+    <td data-social-locations></td>
+    <td data-social-visibility></td>
+    <td class="admin-actions">
+      <button data-action="edit-social">Edit</button>
+      <button data-action="toggle-social"></button>
+      <button data-action="delete-social">Delete</button>
+    </td>
+  </tr>
+</template>

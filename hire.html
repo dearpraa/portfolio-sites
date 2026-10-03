@@ -3,100 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dear praa| Hire-me</title>
-    <link rel="stylesheet" href="css/hire.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <meta name="description" content="Photography portfolio contact page">
+    <title>Photography Portfolio | Contact</title>
+    <link rel="stylesheet" href="css/master.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="assets/icon logo.png">
-
 </head>
 <body>
 
-    <nav>
-        <div class="nav__header">
-            <div class="nav__logo">
-                <a href="home.html">
-                    <img src="assets/logo.png" alt="logo" />
-                </a>
-            </div>
-            <div class="nav__menu__btn" id="menu-btn">
-                <i class="ri-menu-3-line"></i>
-            </div>
-        </div>
-        <ul class="nav__links" id="nav-links">
-            <li><a href="home.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="photography.html">Portfolio</a></li>
-        </ul>
-    </nav>
+    <header class="site-header" id="mainHeader">
+        <a class="nav__logo" href="home.html" aria-label="Home">
+            <img src="assets/logo.png" alt="Portfolio logo">
+        </a>
+        <button class="nav__menu__btn" id="menu-btn" type="button" aria-label="Open navigation" aria-expanded="false">
+            <i class="ri-menu-3-line"></i>
+        </button>
+        <nav aria-label="Main navigation">
+            <ul class="nav__links" id="nav-links"></ul>
+        </nav>
+        <div class="site-header__socials" data-social-location="header" aria-label="Social links"></div>
+    </header>
 
     <div class="floating-elements" id="floatingElements"></div>
 
     <section class="hire-me">
-        <img src="assets/about.png" alt="Your Photo" id="profileImage">
-        <h1>Hire Me for Your Next Project</h1>
-        <p>I'm passionate about delivering high-quality work with creativity and dedication. Let's collaborate to bring your vision to life!</p>
+        <div class="hire-profile-image" data-db-image="contact" hidden><img id="profileImage" alt=""></div>
+        <h1 data-content="contact.title"></h1>
+        <p data-content="contact.description"></p>
 
         <div class="contact">
-            <a href="mailto:gautamprajwol22@gmail.com" id="emailBtn">
-                <i class="ri-mail-line"></i> Email Me
+            <a href="#" id="emailBtn">
+                <i class="ri-mail-line"></i>
+                <span data-content="contact.emailLabel"></span>
             </a>
-            <a href="tel:+971 54 519 2239" id="callBtn">
-                <i class="ri-phone-line"></i> Call Me
+            <a href="#" id="callBtn">
+                <i class="ri-phone-line"></i>
+                <span data-content="contact.phoneLabel"></span>
             </a>
-            <div class="socials">
-                <a href="https://www.facebook.com/prajwol.gautam.35#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
-                <a href="https://www.tiktok.com/@prajwolgautam72" aria-label="TikTok"><i class="ri-tiktok-line"></i></a>
-                <a href="https://www.instagram.com/mr.praajwol/" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
-                <a href="https://www.youtube.com/@PrajwolGautam" aria-label="YouTube"><i class="ri-youtube-fill"></i></a>
-                <a href="https://wa.me/+971 54 519 2239" aria-label="WhatsApp"><i class="ri-whatsapp-line"></i></a>
-            </div>
+            <div class="socials" data-social-location="contact"></div>
         </div>
 
         <div class="end-section">
-            <h2>Let's Work Together</h2>
-            <p>I'm available for freelance work and collaborations. Let's create something amazing that stands out!</p>
+            <h2 data-content="contact.closingTitle"></h2>
+            <p data-content="contact.closingDescription"></p>
         </div>
+
+        <div class="cms-photo-section" data-photo-location="contact" hidden></div>
     </section>
 
-    <footer>
+    <footer class="site-footer">
         <div class="section__container footer__container">
             <div class="footer__col">
-                <h4 class="section__header">Get In Touch</h4>
-                <p>
-                    Reach out for inquiries, collaborations, or just to say hello—I'd
-                    love to connect with you.
-                </p>
+                <h4 class="section__header" data-content="footer.contactTitle"></h4>
+                <p data-content="footer.introduction"></p>
             </div>
             <div class="footer__col">
-                <h4 class="section__header">Where's My Office?</h4>
-                <p>FISTAIL HOUSING, BIRAUTA, POKHARA, NEPAL.</p>
+                <h4 class="section__header" data-content="footer.officeTitle"></h4>
+                <p data-content="contact.location"></p>
             </div>
             <div class="footer__col">
-                <h4 class="section__header">My Social Links</h4>
-                <ul class="footer__socials">
-                    <li>
-                        <a href="https://www.facebook.com/prajwol.gautam.35#"><i class="ri-facebook-fill"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="ri-twitter-fill"></i></a>
-                    </li>
-                    <li>
-                        <a href="https://www.tiktok.com/@prajwolgautam72"><i class="ri-tiktok-line"></i></a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/mr.praajwol/"><i class="ri-instagram-line"></i></a>
-                    </li>
-                    <li>
-                        <a href="https://www.youtube.com/@PrajwolGautam"><i class="ri-youtube-fill"></i></a>
-                    </li>
-                </ul>
+                <h4 class="section__header" data-content="footer.socialTitle"></h4>
+                <ul class="footer__socials" data-social-location="footer"></ul>
             </div>
         </div>
         <div class="footer__bar">
-            Copyright © 2025 Deeznotfound. All rights reserved.
+            <span data-content="footer.copyright"></span>
         </div>
     </footer>
 
+    <script src="Javascript/public-cms.js"></script>
     <script src="Javascript/hire.js"></script>
 
 </body>

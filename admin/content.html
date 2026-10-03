@@ -1,0 +1,155 @@
+<template id="content-view-template">
+  <div>
+    <form id="content-form" class="admin-form">
+      <section class="admin-card">
+        <div class="admin-toolbar"><h2 style="margin: 0;">Homepage</h2><button class="admin-button" type="button" data-content-save="home">Save website content</button></div>
+        <div class="admin-form-grid">
+          <label class="admin-field" for="content-home-heroTitle">
+            Hero Title
+            <input id="content-home-heroTitle" type="text" name="home.heroTitle">
+          </label>
+          <label class="admin-field" for="content-home-heroSubtitle">
+            Hero Subtitle
+            <input id="content-home-heroSubtitle" type="text" name="home.heroSubtitle">
+          </label>
+          <label class="admin-field" for="content-home-ctaText">
+            CTA Text
+            <input id="content-home-ctaText" type="text" name="home.ctaText">
+          </label>
+          <label class="admin-field" for="content-home-aboutTitle">
+            About Section Title
+            <input id="content-home-aboutTitle" type="text" name="home.aboutTitle">
+          </label>
+          <label class="admin-field" for="content-home-aboutCta">
+            About Section Button
+            <input id="content-home-aboutCta" type="text" name="home.aboutCta">
+          </label>
+          <label class="admin-field" for="content-home-portfolioTitle">
+            Portfolio Title
+            <input id="content-home-portfolioTitle" type="text" name="home.portfolioTitle">
+          </label>
+          <label class="admin-field full" for="content-home-introduction">
+            Introduction
+            <textarea id="content-home-introduction" name="home.introduction"></textarea>
+          </label>
+          <label class="admin-field full" for="content-home-portfolioDescription">
+            Portfolio Description
+            <textarea id="content-home-portfolioDescription" name="home.portfolioDescription"></textarea>
+          </label>
+        </div>
+      </section>
+
+      <section class="admin-card">
+        <div class="admin-toolbar"><h2 style="margin: 0;">About</h2><button class="admin-button" type="button" data-content-save="about">Save website content</button></div>
+        <div class="admin-form-grid">
+          <label class="admin-field full" for="content-about-title">
+            Title
+            <input id="content-about-title" type="text" name="about.title">
+          </label>
+          <label class="admin-field full" for="content-about-description">
+            Description
+            <textarea id="content-about-description" name="about.description"></textarea>
+          </label>
+          <label class="admin-field full" for="content-about-biography">
+            Biography
+            <textarea id="content-about-biography" name="about.biography"></textarea>
+          </label>
+          <label class="admin-field" for="content-about-skillsTitle">
+            Skills Title
+            <input id="content-about-skillsTitle" type="text" name="about.skillsTitle">
+          </label>
+          <label class="admin-field full" for="content-about-skillsDescription">
+            Skills Description
+            <textarea id="content-about-skillsDescription" name="about.skillsDescription"></textarea>
+          </label>
+        </div>
+      </section>
+
+      <section class="admin-card">
+        <div class="admin-toolbar"><h2 style="margin: 0;">Portfolio</h2><button class="admin-button" type="button" data-content-save="portfolio">Save website content</button></div>
+        <div class="admin-form-grid">
+          <label class="admin-field full" for="content-portfolio-title">
+            Title
+            <input id="content-portfolio-title" type="text" name="portfolio.title">
+          </label>
+          <label class="admin-field full" for="content-portfolio-description">
+            Description
+            <textarea id="content-portfolio-description" name="portfolio.description"></textarea>
+          </label>
+        </div>
+      </section>
+
+      <section class="admin-card">
+        <div class="admin-toolbar"><h2 style="margin: 0;">Contact</h2><button class="admin-button" type="button" data-content-save="contact">Save website content</button></div>
+        <div class="admin-form-grid">
+          <label class="admin-field" for="content-contact-title">
+            Title
+            <input id="content-contact-title" type="text" name="contact.title">
+          </label>
+          <label class="admin-field" for="content-contact-emailLabel">
+            Email Button Label
+            <input id="content-contact-emailLabel" type="text" name="contact.emailLabel">
+          </label>
+          <label class="admin-field" for="content-contact-phoneLabel">
+            Phone Button Label
+            <input id="content-contact-phoneLabel" type="text" name="contact.phoneLabel">
+          </label>
+          <label class="admin-field" for="content-contact-hireButtonLabel">
+            Hire Button Label
+            <input id="content-contact-hireButtonLabel" type="text" name="contact.hireButtonLabel">
+          </label>
+          <label class="admin-field" for="content-contact-email">
+            Email
+            <input id="content-contact-email" type="email" name="contact.email">
+          </label>
+          <label class="admin-field" for="content-contact-phone">
+            Phone
+            <input id="content-contact-phone" type="text" name="contact.phone">
+          </label>
+          <label class="admin-field" for="content-contact-location">
+            Location
+            <input id="content-contact-location" type="text" name="contact.location">
+          </label>
+          <label class="admin-field full" for="content-contact-description">
+            Description
+            <textarea id="content-contact-description" name="contact.description"></textarea>
+          </label>
+          <label class="admin-field" for="content-contact-closingTitle">
+            Closing Title
+            <input id="content-contact-closingTitle" type="text" name="contact.closingTitle">
+          </label>
+          <label class="admin-field full" for="content-contact-closingDescription">
+            Closing Description
+            <textarea id="content-contact-closingDescription" name="contact.closingDescription"></textarea>
+          </label>
+        </div>
+      </section>
+
+      <section class="admin-card">
+        <div class="admin-toolbar"><h2 style="margin: 0;">Footer</h2><button class="admin-button" type="button" data-content-save="footer">Save website content</button></div>
+        <div class="admin-form-grid">
+          <label class="admin-field" for="content-footer-contactTitle">
+            Contact Title
+            <input id="content-footer-contactTitle" type="text" name="footer.contactTitle">
+          </label>
+          <label class="admin-field" for="content-footer-officeTitle">
+            Office Title
+            <input id="content-footer-officeTitle" type="text" name="footer.officeTitle">
+          </label>
+          <label class="admin-field" for="content-footer-socialTitle">
+            Social Title
+            <input id="content-footer-socialTitle" type="text" name="footer.socialTitle">
+          </label>
+          <label class="admin-field full" for="content-footer-copyright">
+            Copyright
+            <input id="content-footer-copyright" type="text" name="footer.copyright">
+          </label>
+          <label class="admin-field full" for="content-footer-introduction">
+            Introduction
+            <textarea id="content-footer-introduction" name="footer.introduction"></textarea>
+          </label>
+        </div>
+      </section>
+    </form>
+  </div>
+</template>

@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "assets/**"
+    }
+  },
+  "rewrites": [
+    { "source": "/", "destination": "/home.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/portfolio", "destination": "/photography.html" },
+    { "source": "/contact", "destination": "/hire.html" },
+    { "source": "/admin", "destination": "/admin/admin.html" },
+    { "source": "/admin/login", "destination": "/admin/admin.html" },
+    { "source": "/admin/dashboard", "destination": "/admin/admin.html" },
+    { "source": "/admin/portfolio", "destination": "/admin/admin.html" },
+    { "source": "/admin/content", "destination": "/admin/admin.html" },
+    { "source": "/admin/skills", "destination": "/admin/admin.html" },
+    { "source": "/admin/social", "destination": "/admin/admin.html" },
+    { "source": "/admin/navigation", "destination": "/admin/admin.html" },
+    { "source": "/admin/media", "destination": "/admin/admin.html" },
+    { "source": "/admin/settings", "destination": "/admin/admin.html" },
+    { "source": "/api/(.*)", "destination": "/api/index.js" }
+  ]
+}

@@ -1,0 +1,21 @@
+<template id="admin-login-template">
+  <div class="login-shell">
+    <form class="login-card admin-form" id="login-form">
+      <img class="admin-login-logo" src="/assets/logo.png" alt="Portfolio logo">
+      <div>
+        <h1>Admin sign in</h1>
+        <p>Sign in to manage the photography portfolio.</p>
+      </div>
+      <div data-login-notice></div>
+      <label class="admin-field" for="username">
+        Username
+        <input id="username" name="username" type="text" autocomplete="username" required>
+      </label>
+      <label class="admin-field" for="password">
+        Password
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+      </label>
+      <button class="admin-button" type="submit">Sign in</button>
+    </form>
+  </div>
+</template>
