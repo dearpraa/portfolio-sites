@@ -883,7 +883,7 @@
       image.src = item.file_url;
       image.alt = item.alt_text;
       tile.querySelector("[data-media-name]").textContent = item.file_name;
-      tile.querySelector("[data-media-usage]").textContent = `${item.item_count} portfolio use${item.item_count === 1 ? "" : "s"}`;
+      tile.querySelector("[data-media-usage]").textContent = `${item.usage.length} portfolio use${item.usage.length === 1 ? "" : "s"}`;
       grid.append(tile);
     });
 

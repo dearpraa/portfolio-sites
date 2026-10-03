@@ -1,50 +1,65 @@
 # Photography Portfolio CMS
 
-The public pages use CMS data from `/api/public/site`. Run the Node.js server locally or deploy the project to Vercel; opening the HTML files directly or serving them as a static-only site will not load this data or the admin API.
+The existing public design and admin CMS are preserved. CMS content now uses Supabase Postgres and uploaded portfolio images use Supabase Storage, so Vercel's ephemeral filesystem is no longer the source of truth.
 
 ## Requirements
 
-- Node.js 22.13 or newer
-- No npm package installation is required. The server uses Node's built-in SQLite support.
+- Node.js 22.13+
+- Supabase project
+- Vercel environment variables configured
+
+## Supabase setup
+
+1. Open Supabase SQL Editor.
+2. Run `supabase/schema.sql`.
+3. In Supabase Settings → API Keys, create/use a server-side **secret key**.
+4. Never put that secret key in browser code or GitHub. Supabase documents secret keys as server-only credentials that bypass RLS.
+5. The `portfolio-images` bucket is public because the portfolio images are public. Supabase serves public bucket files through its CDN/public object URL.
+
+## Environment variables
+
+Set these in Vercel:
+
+- `SUPABASE_URL`
+- `SUPABASE_SECRET_KEY`
+- `SUPABASE_STORAGE_BUCKET=portfolio-images`
+- `ADMIN_USERNAME`
+- `ADMIN_PASSWORD`
+- `SESSION_SECRET`
+- `AI_API_KEY` (if AI photo analysis is used)
+- `AI_PROVIDER=gemini`
+- `AI_MODEL=gemini-flash-latest`
+
+Do not commit any real API keys or passwords.
 
 ## Run locally
 
 1. Copy `.env.example` to `.env`.
-2. Set a unique `ADMIN_USERNAME` and an `ADMIN_PASSWORD` of at least 12 characters.
-3. Run `npm start`.
-4. Open `http://localhost:3000/` for the site or `http://localhost:3000/admin` for the CMS.
+2. Fill in the Supabase URL and server-side secret key.
+3. Run `npm install`.
+4. Run `npm start`.
+5. Open `http://localhost:3000/` or `http://localhost:3000/admin`.
 
-Do not open `home.html` with VS Code Live Server (usually port `5500`). Live Server only serves static files and does not provide `/api/public/site`, so the page's CMS content will be missing. Use the Node.js server above and open `http://localhost:3000/home.html` instead.
+## Persistence architecture
 
-The SQLite database is the source of website content. A fresh database starts without portfolio photos, skills, social links, navigation, or sample copy; add real content through the admin CMS. Uploaded images are stored in `uploads/`.
+- **Supabase Postgres:** portfolio items, media metadata, sections, site content, navigation, social links, and skills.
+- **Supabase Storage:** uploaded JPG, PNG, WebP, and AVIF portfolio images.
+- **Vercel:** application/serverless runtime only.
+- **Browser:** never receives the Supabase secret key.
 
-## Deploy to Vercel
+Supabase recommends storing large media in Storage rather than in database rows.
 
-Import this repository into Vercel with the repository root as the project root. Vercel uses `vercel.json` to route public paths and the `/api/*` requests to the serverless handler. The function does not seed demo images or website content; production content must come from the database and CMS.
+## Existing content
 
-### Environment Variables on Vercel
-When deploying to Vercel (or when `NODE_ENV=production`), the application enforces strict production security and will refuse to start if any of the following variables are missing:
-- `ADMIN_USERNAME`: Unique admin username (insecure defaults are rejected in production).
-- `ADMIN_PASSWORD`: Strong password of at least 12 characters.
-- `SESSION_SECRET`: Dedicated secret key (e.g. 64-character random string from `openssl rand -hex 32`) used to cryptographically sign HMAC-SHA256 session cookies.
+The old Vercel database lived under `/tmp/data/portfolio.sqlite` and old uploads under `/tmp/uploads`. Those locations are ephemeral and cannot be treated as a durable production backup.
 
-Optional AI variables:
-- `AI_API_KEY`: Google Gemini API key for photo analysis.
-- `AI_PROVIDER`: `gemini` (default).
-- `AI_MODEL`: `gemini-2.0-flash` (default).
-
-### Important Architecture & Serverless Limitations
-- **Stateless Auth**: Sessions use HMAC-SHA256 signed HttpOnly cookies valid for 8 hours, allowing admin authentication across distributed serverless lambda instances.
-- **Ephemeral SQLite Database**: The SQLite database on Vercel is stored under `/tmp/data/portfolio.sqlite`. `/tmp` storage is ephemeral and local to each lambda instance; changes made in the admin panel are not shared across serverless instances and are wiped when instances recycle. A hosted database (such as Turso) is required for persistent data in production.
-- **Ephemeral Uploads**: Uploaded media under `/tmp/uploads` is similarly temporary and will disappear across function restarts. Object storage (such as Cloudflare R2, AWS S3, or Vercel Blob) is required for durable uploads.
-- **Brute-Force Rate Limiting**: The login attempt limiter uses an in-memory `Map` within the active Node process. On serverless platforms like Vercel, this memory is not shared across lambda instances, so the in-memory limiter is not effective against distributed attempts across cold starts.
-
+If you still have a local copy of the old `data/portfolio.sqlite` and `uploads/` directory, migrate that local copy before switching production traffic. If the only copy existed inside a recycled Vercel function, it cannot be recovered reliably from the old architecture.
 
 ## Project structure
 
-- `home.html`, `about.html`, `photography.html`, and `hire.html` are the public pages.
-- `Javascript/public-cms.js` loads and renders CMS data on public pages.
-- `Javascript/server.js` implements the API and local Node.js server.
-- `api/index.js` is the Vercel serverless entry point.
-- `admin/admin.html` and `admin/*.html` provide the admin shell and page templates.
-- `css/master.css` contains the public site styles.
+- `home.html`, `about.html`, `photography.html`, `hire.html` — public pages
+- `admin/` — existing CMS UI
+- `Javascript/server-supabase.js` — Supabase-backed API/server
+- `Javascript/server.js` — previous SQLite implementation retained for rollback/reference
+- `Javascript/ai-photo-service.js` — existing Gemini photo analysis
+- `supabase/schema.sql` — database/storage setup
