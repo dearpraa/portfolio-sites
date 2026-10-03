@@ -5,18 +5,29 @@ The public pages use CMS data from `/api/public/site`. Run the Node.js server lo
 ## Requirements
 
 - Node.js 22.13 or newer
-- No npm package installation is required. The server uses Node's built-in SQLite support.
+- Supabase project with the CMS schema applied (see [Supabase setup](#supabase-setup)).
+- npm dependencies installed with `npm install`.
 
 ## Run locally
 
 1. Copy `.env.example` to `.env`.
-2. Set a unique `ADMIN_USERNAME` and an `ADMIN_PASSWORD` of at least 12 characters.
-3. Run `npm start`.
-4. Open `http://localhost:3000/` for the site or `http://localhost:3000/admin` for the CMS.
+2. Set a unique `ADMIN_USERNAME`, a strong `ADMIN_PASSWORD`, and a `SESSION_SECRET`.
+3. Set `SUPABASE_URL` and the server-only `SUPABASE_SECRET_KEY`.
+4. Apply the SQL migration and, if needed, import existing SQLite content as described below.
+5. Run `npm install` and `npm start`.
+6. Open `http://localhost:3000/` for the site or `http://localhost:3000/admin` for the CMS.
 
 Do not open `home.html` with VS Code Live Server (usually port `5500`). Live Server only serves static files and does not provide `/api/public/site`, so the page's CMS content will be missing. Use the Node.js server above and open `http://localhost:3000/home.html` instead.
 
-The SQLite database is the source of website content. A fresh database starts without portfolio photos, skills, social links, navigation, or sample copy; add real content through the admin CMS. Uploaded images are stored in `uploads/`.
+Supabase Postgres is the source of CMS content. Uploaded image files remain in `uploads/`; only their metadata is stored in Postgres.
+
+## Supabase setup
+
+1. In the Supabase SQL Editor, run [`supabase/migrations/20261003000000_cms_schema.sql`](./supabase/migrations/20261003000000_cms_schema.sql).
+2. Set `SUPABASE_URL` and `SUPABASE_SECRET_KEY` in `.env` locally and in the production environment. The secret key is server-only: do not prefix it with `NEXT_PUBLIC_`, place it in frontend code, or commit it.
+3. If this project already has CMS records in `data/portfolio.sqlite`, run `npm run import:sqlite` once after applying the schema. The importer is repeatable and upserts by primary key.
+
+The SQL migration enables row-level security without public policies. The Node server uses the secret key only for its server-side database requests; public pages continue to read content through the existing `/api/public/site` endpoint. Admin login and signed session cookies are unchanged.
 
 ## Deploy to Vercel
 
@@ -27,6 +38,8 @@ When deploying to Vercel (or when `NODE_ENV=production`), the application enforc
 - `ADMIN_USERNAME`: Unique admin username (insecure defaults are rejected in production).
 - `ADMIN_PASSWORD`: Strong password of at least 12 characters.
 - `SESSION_SECRET`: Dedicated secret key (e.g. 64-character random string from `openssl rand -hex 32`) used to cryptographically sign HMAC-SHA256 session cookies.
+- `SUPABASE_URL`: Supabase project URL.
+- `SUPABASE_SECRET_KEY`: Server-only Supabase secret key.
 
 Optional AI variables:
 - `AI_API_KEY`: Google Gemini API key for photo analysis.
@@ -35,8 +48,7 @@ Optional AI variables:
 
 ### Important Architecture & Serverless Limitations
 - **Stateless Auth**: Sessions use HMAC-SHA256 signed HttpOnly cookies valid for 8 hours, allowing admin authentication across distributed serverless lambda instances.
-- **Ephemeral SQLite Database**: The SQLite database on Vercel is stored under `/tmp/data/portfolio.sqlite`. `/tmp` storage is ephemeral and local to each lambda instance; changes made in the admin panel are not shared across serverless instances and are wiped when instances recycle. A hosted database (such as Turso) is required for persistent data in production.
-- **Ephemeral Uploads**: Uploaded media under `/tmp/uploads` is similarly temporary and will disappear across function restarts. Object storage (such as Cloudflare R2, AWS S3, or Vercel Blob) is required for durable uploads.
+- **Ephemeral Uploads**: Uploaded media under `/tmp/uploads` is temporary and may disappear across function restarts. The `portfolio-images` Supabase Storage bucket is not currently used by this app; use durable object storage before relying on production uploads.
 - **Brute-Force Rate Limiting**: The login attempt limiter uses an in-memory `Map` within the active Node process. On serverless platforms like Vercel, this memory is not shared across lambda instances, so the in-memory limiter is not effective against distributed attempts across cold starts.
 
 

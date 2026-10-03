@@ -4,9 +4,13 @@
   "private": true,
   "description": "Photography portfolio website and self-hosted admin CMS",
   "scripts": {
-    "start": "node --env-file-if-exists=.env Javascript/server.js"
+    "start": "node --env-file-if-exists=.env Javascript/server.js",
+    "import:sqlite": "node Javascript/import-sqlite-to-supabase.js"
   },
   "engines": {
     "node": ">=22.13"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.117.2"
   }
 }
